@@ -64,8 +64,6 @@ jobs:
       - name: 'Set up Cloud SDK'
         uses: 'google-github-actions/setup-gcloud@v2'
 
-entials: true
-
       - name: Deploy
         run: |-
           cd typescript/packages/lookslike-high-level
