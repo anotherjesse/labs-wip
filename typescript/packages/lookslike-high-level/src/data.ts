@@ -56,38 +56,7 @@ export function addCharms(newCharms: CellImpl<any>[]) {
 }
 
 addCharms([
-  run(fetchExample, {
-    url: "https://anotherjesse-restfuljsonblobapi.web.val.run/items",
-  }),
-  run(fetchCollections, {
-    url: "/api/data/collections/"
-  }),
-  run(todoList, {
-    title: "My TODOs",
-    items: ["Buy groceries", "Walk the dog", "Wash the car"].map((item) => ({
-      title: item,
-      done: false,
-    })),
-  }),
-  run(todoList, {
-    title: "My grocery shopping list",
-    items: ["milk", "eggs", "bread"].map((item) => ({
-      title: item,
-      done: false,
-    })),
-  }),
-  run(ticket, {
-    title: "Reservation for 'Counterstrike the Musical'",
-    show: "Counterstrike the Musical",
-    date: getFridayAndMondayDateStrings().startDate,
-    location: "New York",
-  }),
   run(counter, { title: "Summer Reading" }),
-  run(routine, {
-    title: "Morning routine",
-    // TODO: A lot more missing here, this is just to drive the suggestion.
-    locations: ["coffee shop with great baristas"],
-  }),
 ]);
 
 export type RecipeManifest = {
