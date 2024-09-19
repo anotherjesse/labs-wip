@@ -54,3 +54,15 @@ jobs:
           cd typescript/packages/lookslike-high-level
           npm ci
           npm run build
+
+      - name: Setup - gcloud / gsutil
+        uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+        with:
+          service_account_key: ${{ secrets.GCP_KEY }}
+          project_id: ${{ secrets.GCS_PROJECT }}
+          export_default_credentials: true
+
+      - name: Deploy
+        run: |-
+          cd typescript/packages/lookslike-high-level
+          gsutil -m rsync -R dist gs://$GCS_BUCKET
