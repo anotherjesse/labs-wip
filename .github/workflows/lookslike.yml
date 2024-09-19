@@ -56,8 +56,12 @@ jobs:
       - name: 'Set up GCloud SDK'
         uses: 'google-github-actions/setup-gcloud@v2'
 
+      - name: Get short SHA
+        id: slug
+        run: echo "::set-output name=sha8::$(echo ${GITHUB_SHA} | cut -c1-8)"
+
       - name: Deploy
         run: |-
           cd typescript/packages/lookslike-high-level
-          gsutil cp dist/assets/* gs://$GCS_BUCKET/assets/
-          gsutil cp dist/index.html gs://$GCS_BUCKET/
+          gsutil cp dist/assets/* gs://${{ secrets.GCS_BUCKET }}/assets/
+          gsutil cp dist/index.html gs://${{ secrets.GCS_BUCKET }}/${{ steps.slug.outputs.sha8 }}/index.html
