@@ -40,5 +40,9 @@ jobs:
         with:
           deno-version: v1.x
 
-      - run: npm install
+      - name: Install deps
+        run: |
+          cd ${{ env.WORKING_DIRECTORY }}
+          npm install
+
       - run: npm run build
