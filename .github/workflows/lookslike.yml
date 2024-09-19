@@ -67,4 +67,6 @@ jobs:
       - name: Deploy
         run: |-
           cd typescript/packages/lookslike-high-level
-          gsutil -m rsync -R dist gs://$GCS_BUCKET
+          cd typescript/packages/lookslike-high-level
+          gsutil cp dist/assets/* gs://$GCS_BUCKET/assets/
+          gsutil cp dist/index.html gs://$GCS_BUCKET/
