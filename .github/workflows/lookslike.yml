@@ -2,9 +2,7 @@ name: Deploy Static Sketch
 
 on:
   push:
-    branches: ["main"]
   pull_request:
-    branches: ["main"]
 
 env:
   NODE_VERSION: 20
@@ -60,8 +58,16 @@ jobs:
         id: slug
         run: echo "::set-output name=sha8::$(echo ${GITHUB_SHA} | cut -c1-8)"
 
-      - name: Deploy
+      - name: Deploy to version
         run: |-
           cd typescript/packages/lookslike-high-level
           gsutil cp dist/assets/* gs://${{ secrets.GCS_BUCKET }}/assets/
           gsutil cp dist/index.html gs://${{ secrets.GCS_BUCKET }}/${{ steps.slug.outputs.sha8 }}/index.html
+          echo "deployed to https://throw-away.saga-castor.ts.net/${{ steps.slug.outputs.sha8 }}/"
+
+      - name: Deploy to root if main branch
+        if: github.ref == 'refs/heads/main'
+        run: |-
+          cd typescript/packages/lookslike-high-level
+          gsutil cp dist/index.html gs://${{ secrets.GCS_BUCKET }}/index.html
+          echo "deployed main to https://throw-away.saga-castor.ts.net/"
