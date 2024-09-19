@@ -34,7 +34,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
 
       - name: Install Cargo
-        uses: actions/cargo-install@v3.1.1
+        uses: baptiste0928/cargo-install@v3.1.1
 
       - name: Setup Deno
         # uses: denoland/setup-deno@v1
