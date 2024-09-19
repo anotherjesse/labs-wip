@@ -69,13 +69,6 @@ addCharms([
       done: false,
     })),
   }),
-  run(todoList, {
-    title: "My grocery shopping list",
-    items: ["milk", "eggs", "bread"].map((item) => ({
-      title: item,
-      done: false,
-    })),
-  }),
   run(ticket, {
     title: "Reservation for 'Counterstrike the Musical'",
     show: "Counterstrike the Musical",
