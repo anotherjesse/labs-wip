@@ -51,6 +51,9 @@
     "@commontools/common-html": "^0.0.1",
     "@commontools/common-ui": "^0.0.1",
     "@commontools/llm-client": "^0.0.1",
+    "@commontools/common-propagator": "^0.0.1",
+    "@commontools/common-frp-lit": "^0.0.1",
+    "lit-html": "^3.1.4",
     "@commontools/lookslike-sagas": "^0.0.1"
   },
   "overrides": {
