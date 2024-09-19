@@ -30,6 +30,7 @@
   "wireit": {
     "build": {
       "dependencies": [
+        "../common-propagator:build",
         "../common-builder:build",
         "../common-runner:build",
         "../common-frp:build",
